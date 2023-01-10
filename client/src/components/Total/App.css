@@ -1,0 +1,35 @@
+.App{
+    margin: 0;
+    padding: 0;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+    background-color:rgb(249, 244, 244);
+  }
+  .head{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height:100px;
+    background-color: black;
+    align-items: center;
+  }
+  .head img{
+    width:200px;
+    height:80px;
+    padding: 10px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+  .body{
+    display: flex;
+  }
+  .table{
+    flex:3;
+    position: relative;
+  }
+  .filter{
+    flex:1;
+  }
