@@ -1,7 +1,7 @@
 .container {
 	margin: 10px;
 	align-items: flex-start;
-	padding: 10px 20px;
+	padding: 10px 50px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	background-color: white;
 	border-radius: 4px;
@@ -9,16 +9,20 @@
 
 .heading {
 	margin: 0;
-	font-size: 16px;
 	margin: 10px;
-	text-align: center;
+	/* text-align: center; */
 }
 
 .genre_container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 }
+.genre_input {
+	/* You can adjust the width and height values as needed */
+	width: 20px;
+	height: 20px;
+  }
 
 .genre {
 	min-width: 90px;
@@ -29,4 +33,6 @@
 
 .genre_label {
 	margin: 0;
-	margin-left: 5px;}
+	margin-left: 10px;
+	font-size: 20px;
+}

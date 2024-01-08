@@ -1,9 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const dbConnect = require("./db");
-const movieRoutes = require("./routes/movies");
-const userRoutes= require("./routes/user");
-const authRoutes= require("./routes/auth")
+const houseRoutes = require("./routes/houses");
+const cityRoutes=require("./routes/city")
 const cors = require("cors");
 const app = express();
 
@@ -12,9 +11,8 @@ dbConnect();
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/users",userRoutes);
-app.use("/api/auth",authRoutes);
-app.use("/api/movies",movieRoutes);
+app.use("/api/cities",cityRoutes);
+app.use("/api/houses",houseRoutes);
 
 
 

@@ -22,8 +22,6 @@ function Total() {
         const url=`${base_url}?page=${page}&genre=${filterGenre.toString()}&sort=${sort.sort},${sort.order}&search=${search}`
         const { data } = await axios.get(url);
         setObj(data);
-        console.log(data)
-        console.log(obj.movies)
       } catch (error) {
         console.log(error);
       }

@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const Movie = require("../modules/Movie");
+const Movie = require("../modules/house");
 
 router.get("/", async (req, res) => {
 	try {
 		const page = parseInt(req.query.page) - 1 || 0;
-		const limit = parseInt(req.query.limit) || 5;
+		const limit = parseInt(req.query.limit) || 8;
 		const search = req.query.search || "";
 		let sort = req.query.sort || "rating";
 		let genre = req.query.genre || "All";
@@ -61,18 +61,5 @@ router.get("/", async (req, res) => {
 		res.status(500).json({ error: true, message: "Internal Server Error" });
 	}
 });
-
-// const insertMovies = async () => {
-//     try {
-//         const docs = await Movie.insertMany(movies);
-//         return Promise.resolve(docs);
-//     } catch (err) {
-//         return Promise.reject(err)
-//     }
-// };
-
-// insertMovies()
-//     .then((docs) => console.log(docs))
-//     .catch((err) => console.log(err))
 
 module.exports = router;
