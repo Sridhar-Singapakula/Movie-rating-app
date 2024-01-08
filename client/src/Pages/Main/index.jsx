@@ -43,7 +43,7 @@ const Main = () => {
   const fetchOptions = async () => {
     try {
       const url = process.env.REACT_URL;
-      const response = await axios.get("http://localhost:8000/api/cities");
+      const response = await axios.get("https://b8rhomes.onrender.com/api/cities");
       const responseData = response.data;
   
       if (response.status === 200) {
@@ -80,7 +80,7 @@ const Main = () => {
     
     if (selectedCityId) {
       try {
-        const response = await axios.get(`http://localhost:8000/api/cities/${selectedCityId}/houses?propertyType=${filterProperty.toString()}&amenities=${filterAmenities.toString()}&bedrooms=${filterBedrooms.toString()}`);
+        const response = await axios.get(`https://b8rhomes.onrender.com/api/cities/${selectedCityId}/houses?propertyType=${filterProperty.toString()}&amenities=${filterAmenities.toString()}&bedrooms=${filterBedrooms.toString()}`);
         const cityData = response.data; // This should contain the data for the selected city
         setCityDa(cityData);
       } catch (error) {
