@@ -122,7 +122,7 @@ router.get("/:id/houses", async (req, res) => {
               $in: req.query.propertyType ? req.query.propertyType.split(",") : propertyTypeOptions
             },
             bedrooms: { $in: req.query.bedrooms ? req.query.bedrooms.split(",") : bedroomsOptions },
-            price: { $gte: priceMin, $lte: priceMax },
+            
             amenities: { $in: req.query.amenities ? req.query.amenities.split(",") : amenitiesOptions },
             age: {
               $in: req.query.age ? req.query.age.split(",") : ageOptions
@@ -133,6 +133,9 @@ router.get("/:id/houses", async (req, res) => {
             NoOfBathrooms: {
               $in: req.query.noOfBathrooms ? req.query.noOfBathrooms.split(",") : noOfBathroomsOptions
             },
+            ...(req.query.priceMin && req.query.priceMax ? {
+              price: { $gte: parseInt(req.query.priceMin), $lte: parseInt(req.query.priceMax) }
+            } : {}),
           } : { _id: { $in: city.houses } };
       const houses = await House.find(filters)
           .sort({ [sort]: 1 })

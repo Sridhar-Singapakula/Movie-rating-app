@@ -5,7 +5,7 @@ import Select from "../../components/Inputs/Select";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import Slider from 'react-slick';
+import Slider1 from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'aos/dist/aos.css'
@@ -20,6 +20,7 @@ import AOS from 'aos';
 import Property from "../../components/Property"
 import Amenities from "../../components/Amenities";
 import Bedrooms from "../../components/Bedrooms";
+import Slider from 'react-slider';
 
 const Main = () => {
   const [fetchedTests,setFetchedTests]=useState({})
@@ -29,11 +30,14 @@ const Main = () => {
   const [filterProperty, setFilterProperty] = useState([]);
   const [filterAmenities, setFilterAmenities] = useState([]);
   const [filterBedrooms, setFilterBedrooms] = useState([]);
+  const [priceRange, setPriceRange] = useState([0, 1000000]); // Set initial range as needed
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
   const [startDate, setStartDate] = useState(new Date());
+  const [values, setValues] = useState([0, 100]);
+  const handleChange = (newValues) => setValues(newValues);
 
   const handleInputState = (name, value) => {
     if (name === "tests") {
@@ -80,7 +84,7 @@ const Main = () => {
     
     if (selectedCityId) {
       try {
-        const response = await axios.get(`http://localhost:8000/api/cities/${selectedCityId}/houses?propertyType=${filterProperty.toString()}&amenities=${filterAmenities.toString()}&bedrooms=${filterBedrooms.toString()}`);
+        const response = await axios.get(`http://localhost:8000/api/cities/${selectedCityId}/houses?propertyType=${filterProperty.toString()}&amenities=${filterAmenities.toString()}&bedrooms=${filterBedrooms.toString()}&priceMin=${priceRange[0]}&priceMax=${priceRange[1]}`);
         const cityData = response.data; // This should contain the data for the selected city
         setCityDa(cityData);
       } catch (error) {
@@ -90,7 +94,7 @@ const Main = () => {
   };
   useEffect(() => {
     handleSubmit();
-  }, [filterProperty,filterAmenities,filterBedrooms]);
+  }, [filterProperty,filterAmenities,filterBedrooms,priceRange]);
 
   return (
     <div>
@@ -108,6 +112,7 @@ const Main = () => {
       </div>
     </section>
     <section>
+    
               <div className="selection">
                 <Select
 								name="tests"
@@ -145,6 +150,35 @@ const Main = () => {
       bedrooms={cityDa.bedroomsOptions ? cityDa.bedroomsOptions  : []}
       setFilterBedrooms={(bedrooms) => setFilterBedrooms(bedrooms)}
       />
+       
+       <Slider
+        className="slider"
+        value={values}
+        onChange={handleChange}
+        min={0}
+        max={100}
+      />
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          <label htmlFor="minPrice">Min Price:</label>
+          <input
+            type="number"
+            id="minPrice"
+            value={values[0]}
+            onChange={(e) => handleChange([+e.target.value, values[1]])}
+          />
+        </div>
+        <div>
+          <label htmlFor="maxPrice">Max Price:</label>
+          <input
+            type="number"
+            id="maxPrice"
+            value={values[1]}
+            onChange={(e) => handleChange([values[0], +e.target.value])}
+          />
+        </div>
+      </div>
+     
         </>
       
             :(<p>Choose City before applying filters</p>)}
@@ -155,11 +189,11 @@ const Main = () => {
       
       <div key={house._id} className="houses">
       <div className="house_img">
-        <Slider className="house_img" {...sliderSettings}>
+        <Slider1 className="house_img" {...sliderSettings}>
         {house.img.map((image, index) => (
                 <img key={index} src={image} alt={`House Image ${index + 1}`} className="gallery_" />
               ))}
-        </Slider>
+        </Slider1>
         
       </div>
         <div className="details">
@@ -215,4 +249,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default Main;

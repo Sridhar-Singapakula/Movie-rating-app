@@ -1014,27 +1014,53 @@ flex-wrap: wrap;
     flex:4;
   }
   .house_img img{
- 
-   height:250px;
+    height:250px;
     object-fit: cover;
     background-size: cover;
   }
-  @media(max-width:770px){
+  @media(max-width:1200px){
+    .houses{
+      display: block;
+    }
+    .details{
+      margin-top: 20px;
+    }
+    .last_div{
+      margin-top: 20px;
+    }
+  }
+  @media(max-width:990px){
     .houses_section{
       display: block;
     }
+    
   }
-  @media(max-width:600px){
+  @media(max-width:968px){
     .house_img{
-      width:250px;
+      width:650px;
      }
+    
   }
-  @media(max-width:450px){
+  @media(max-width:743px){
     .house_img{
-      width:150px;
+      width:450px;
     
      }
   }
+  @media(max-width:543px){
+    .house_img{
+      width:350px;
+    
+     }
+  }
+  @media(max-width:441px){
+    .house_img{
+      width:300px;
+    
+     }
+  }
+
+
   .details h5{
     font-size: 21px;
     font-weight: 550;
