@@ -47,7 +47,7 @@ const Main = () => {
   const fetchOptions = async () => {
     try {
       const url = process.env.REACT_URL;
-      const response = await axios.get("http://localhost:8000/api/cities");
+      const response = await axios.get("https://b8rhomes.onrender.com/api/cities");
       const responseData = response.data;
   
       if (response.status === 200) {
@@ -249,4 +249,8 @@ const Main = () => {
   )
 }
 
+<<<<<<< HEAD
 export default Main;
+=======
+export default Main
+>>>>>>> cbf202b5ca3693080dc2259193a7a99920171817
