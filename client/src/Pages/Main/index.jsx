@@ -151,33 +151,8 @@ const Main = () => {
       setFilterBedrooms={(bedrooms) => setFilterBedrooms(bedrooms)}
       />
        
-       <Slider
-        className="slider"
-        value={values}
-        onChange={handleChange}
-        min={0}
-        max={100}
-      />
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <label htmlFor="minPrice">Min Price:</label>
-          <input
-            type="number"
-            id="minPrice"
-            value={values[0]}
-            onChange={(e) => handleChange([+e.target.value, values[1]])}
-          />
-        </div>
-        <div>
-          <label htmlFor="maxPrice">Max Price:</label>
-          <input
-            type="number"
-            id="maxPrice"
-            value={values[1]}
-            onChange={(e) => handleChange([values[0], +e.target.value])}
-          />
-        </div>
-      </div>
+      
+         
      
         </>
       
@@ -249,8 +224,6 @@ const Main = () => {
   )
 }
 
-<<<<<<< HEAD
 export default Main;
-=======
-export default Main
->>>>>>> cbf202b5ca3693080dc2259193a7a99920171817
+
+
