@@ -84,7 +84,7 @@ const Main = () => {
     
     if (selectedCityId) {
       try {
-        const response = await axios.get(`http://localhost:8000/api/cities/${selectedCityId}/houses?propertyType=${filterProperty.toString()}&amenities=${filterAmenities.toString()}&bedrooms=${filterBedrooms.toString()}&priceMin=${priceRange[0]}&priceMax=${priceRange[1]}`);
+        const response = await axios.get(`https://b8rhomes.onrender.com/api/cities/${selectedCityId}/houses?propertyType=${filterProperty.toString()}&amenities=${filterAmenities.toString()}&bedrooms=${filterBedrooms.toString()}&priceMin=${priceRange[0]}&priceMax=${priceRange[1]}`);
         const cityData = response.data; // This should contain the data for the selected city
         setCityDa(cityData);
       } catch (error) {
